@@ -101,9 +101,10 @@ var styles = StyleSheet.create({
   },
   title: {
     color: '#F58120',
-    fontSize: 48,
+    fontSize: 40,
     fontFamily: 'Source Sans Pro 200',
-    lineHeight: 56,
+    lineHeight: 45,
+    textAlign: 'center',
     marginBottom: 25,
   },
   text: {

@@ -63,7 +63,7 @@ class AdInterstitial extends Component {
                 </TouchableOpacity>
               <View style={styles.textContainer}>
                 <Text style={styles.text}>
-                  Ads help us keep this app free
+                  Remove ads and we'll donate to dogs in need
                 </Text>
               </View>
                 <AdMobBanner
@@ -111,7 +111,7 @@ var styles = StyleSheet.create({
   text: {
     color: '#ef3a39',
     textAlign: 'center',
-    fontSize: 35,
+    fontSize: 30,
     fontFamily: 'Source Sans Pro 200',
     alignSelf: 'center'
   },
