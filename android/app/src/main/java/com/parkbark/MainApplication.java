@@ -3,6 +3,7 @@ package com.parkbark;
 import android.app.Application;
 import android.util.Log;
 
+import com.pushwoosh.reactnativeplugin.PushwooshPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 import com.facebook.react.ReactApplication;
 import com.idehub.Billing.InAppBillingBridgePackage;
@@ -39,7 +40,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNAdMobPackage(),
             new RNDeviceInfo(),
             new MapsPackage(),
-            new LocationServicesDialogBoxPackage()
+            new LocationServicesDialogBoxPackage(),
+            new PushwooshPackage()
       );
     }
   };
