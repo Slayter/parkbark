@@ -32,7 +32,7 @@ export function updateSearch(state, search) {
 }
 
 export function updateParksAction(coords, dist){
-  return fetch('http://parkbark-api.bfdig.com/parks?loc=' + coords + '<=' + dist + 'miles', {
+  return fetch('http://api.parkbarkapp.site/parks?loc=' + coords + '<=' + dist + 'miles', {
     method: 'get',
     headers: {
       'Accept': 'application/json',

@@ -37,7 +37,7 @@ export function clearStaged(state, filterState){
 
 
 export function fetchAmenitiesAction() {
-  return fetch('http://parkbark-api.bfdig.com/amenities', {
+  return fetch('http://api.parkbarkapp.site/amenities', {
     method: 'get',
     headers: {
       'Accept': 'application/json',
@@ -60,9 +60,9 @@ export function fetchAmenitiesAction() {
 
 export function updateParksByFilterAction(coords, dist, query) {
   if (__DEV__) {
-      console.log('http://parkbark-api.bfdig.com/parks?loc=' + coords + '<=' + dist + 'miles&amenities=' + query);
+      console.log('http://api.parkbarkapp.site/parks?loc=' + coords + '<=' + dist + 'miles&amenities=' + query);
   }
-  return fetch('http://parkbark-api.bfdig.com/parks?loc=' + coords + '<='+ dist +'miles&amenities=' + query, {
+  return fetch('http://api.parkbarkapp.site/parks?loc=' + coords + '<='+ dist +'miles&amenities=' + query, {
     method: 'get',
     headers: {
       'Accept': 'application/json',

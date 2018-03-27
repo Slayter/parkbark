@@ -11,7 +11,7 @@ export function updateParkSurvey(state, updateValue) {
 
 
 export function sendSurveyResponses(formData) {
-    return fetch('http://parkbark-api.bfdig.com/entity/node', {
+    return fetch('http://api.parkbarkapp.site/entity/node', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -21,10 +21,10 @@ export function sendSurveyResponses(formData) {
           body: JSON.stringify({
               "_links": {
                 "type": {
-                  "href":"http://parkbark-api.bfdig.com/rest/type/node/survey_responses"
+                  "href":"http://api.parkbarkapp.site/rest/type/node/survey_responses"
                 },
-                "http://parkbark-api.bfdig.com/rest/relation/node/survey_responses/field_park_amenities": {
-                  "href": "http://parkbark-api.bfdig.com/taxonomy/term/1?_format=hal_json"
+                "http://api.parkbarkapp.site/rest/relation/node/survey_responses/field_park_amenities": {
+                  "href": "http://api.parkbarkapp.site/taxonomy/term/1?_format=hal_json"
                 }
               },
               "type":[{"target_id":"survey_responses"}],
