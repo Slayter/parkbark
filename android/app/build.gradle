@@ -90,7 +90,7 @@ android {
         applicationId "com.parkbark"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 20
+        versionCode 22
         versionName "0.0.20"
         multiDexEnabled true
         ndk {
@@ -140,8 +140,17 @@ dependencies {
     compile project(':react-native-share')
     compile project(':RNAdMob')
     compile project(':react-native-device-info')
-    compile project(':react-native-maps')
-    compile 'com.google.firebase:firebase-core:10.2.1'
+    compile(project(':react-native-maps')){
+        exclude group: 'com.google.android.gms', module: 'play-services-base'
+        exclude group: 'com.google.android.gms', module: 'play-services-maps'
+    }
+    compile ('com.google.android.gms:play-services-base:11.0.2') {
+        force = true;
+    }
+    compile ('com.google.android.gms:play-services-maps:11.0.2') {
+        force = true;
+    }
+    compile 'com.google.firebase:firebase-core:11.0.2'
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
