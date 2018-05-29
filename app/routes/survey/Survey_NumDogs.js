@@ -3,7 +3,8 @@ import { StyleSheet, View, TouchableHighlight, Text, TouchableOpacity, Image } f
 import { connect } from 'react-redux';
 import { sendSurveyResponses } from '../../src/survey_core';
 import Button from '../../components/common/Button.js';
-import { Form, InputField } from 'react-native-form-generator';
+// import { Form, InputField } from 'react-native-form-generator';
+import { Form, InputField } from './../../components/form_generator';
 import { Actions } from 'react-native-router-flux';
 
 
@@ -23,7 +24,7 @@ class Survey_NumDogs extends Component {
       updateValue.value = this.state.formData.num_dogs;
       this.props.dispatch({type: 'UPDATE_SURVEY', state: updateValue});
       this.sendFormData().done(() => {
-        Actions.thanks();
+        Actions.thanks({suggestPark: false});
       });
   }
 

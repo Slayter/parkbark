@@ -5,9 +5,9 @@ import {
     StyleSheet,
     Text,
     Platform,
-    BackAndroid,
     NetInfo,
-    Alert
+    Alert,
+    BackHandler
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -15,43 +15,40 @@ import Button from '../components/common/Button.js';
 import {fetchAmenitiesAction} from '../src/filter_core';
 import networkAlert from '../components/common/NetworkAlert';
 
+class Landing extends Component {
+	componentWillMount() {
+	// TODO: configure notifications for IOS
+	// if (Platform.OS === 'ios') {
+	//   PushNotification.checkPermissions((response) => {
+	//     for (var item in response) {
+	//       if (response[item]) {
+	//         this.props.dispatch({type: 'SET_NOTIFICATIONS', state: true})
+	//         break
+	//       }
+	//     }
+	//   })
+	// }
+	
+}
 
-
-const Landing = React.createClass ({
-
-  componentWillMount: function() {
-    // TODO: configure notifications for IOS
-    // if (Platform.OS === 'ios') {
-    //   PushNotification.checkPermissions((response) => {
-    //     for (var item in response) {
-    //       if (response[item]) {
-    //         this.props.dispatch({type: 'SET_NOTIFICATIONS', state: true})
-    //         break
-    //       }
-    //     }
-    //   })
-    // }
-
-  },
-
-  componentDidMount: function() {
+  componentDidMount() {
     fetchAmenitiesAction().done((amenities) => {
       if (!amenities) {
         return networkAlert.checkConnection();
       }
       this.props.dispatch({type: 'SET_AMENITIES', state: amenities})
     });
-    BackAndroid.addEventListener('hardwareBackPress', () => {
-      BackAndroid.exitApp();
+		BackHandler.addEventListener('hardwareBackPress', () => {
+			BackHandler.exitApp();
       return true
     });
-  },
-  render:function() {
+  }
+  render() {
     return (
       <View style={styles.wrapper}>
         <View style={styles.container}>
           <View style={styles.imageContainer}>
-            <Image source={require('../img/welcomePup@2x.png')}/>
+            <Image source={require('../img/welcomePup.png')}/>
           </View>
           <View style={styles.textContainer}>
             <Text style={styles.title} type="text">Find dog parks near you.</Text>
@@ -60,22 +57,21 @@ const Landing = React.createClass ({
               details you're looking for.
             </Text>
           </View>
-          <Button bgimage={require('../img/orange-gradient-long.png')} icon={require('../img/forward-arrow@3x.png')} alignSelf={'center'} onPress={this.onNextPress}/>
+          <Button bgimage={require('../img/orange-gradient-long.png')} icon={require('../img/forward-arrow.png')} alignSelf={'center'} onPress={this.onNextPress}/>
         </View>
       </View>
     );
-  },
+  }
 
-  onNextPress: function() {
+  onNextPress = () => {
     if (this.props.notificationState || Platform.OS === 'android') {
       Actions.map();
     } else {
       // TODO:Handle notification check for IOS
       // this.props.navigator.push({name: 'features'});
     }
-},
-
-})
+  }
+}
 
 
 var styles = StyleSheet.create({

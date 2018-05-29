@@ -1,3 +1,4 @@
+import React from 'react';
 import InAppBilling from 'react-native-billing';
 
 

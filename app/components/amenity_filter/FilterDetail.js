@@ -18,7 +18,7 @@ class FilterDetail extends Component {
     if(!staged & !selected || staged === 'remove') {
       this.props.dispatch({type: 'ADD_STAGED_FILTER', state: currentFilterIndex});
       this.fontFamily = 'Source Sans Pro 700';
-      this.image = require('../../img/Ok@3x.png');
+      this.image = require('../../img/Ok.png');
     }
   }
 
@@ -26,7 +26,7 @@ class FilterDetail extends Component {
     const { staged, selected } = this.props.currentFilter;
     if (selected || staged === 'add' ) {
       this.fontFamily = 'Source Sans Pro 700';
-      this.image = require('../../img/Ok@3x.png');
+      this.image = require('../../img/Ok.png');
     }
     if (!staged & !selected || staged === 'remove')  {
       this.fontFamily = 'Source Sans Pro 200';
@@ -35,7 +35,7 @@ class FilterDetail extends Component {
 
     if (this.props.checked) {
       this.fontFamily = 'Source Sans Pro 700';
-      this.image = require('../../img/Ok@3x.png');
+      this.image = require('../../img/Ok.png');
     }
 
     return (

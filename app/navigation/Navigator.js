@@ -1,6 +1,6 @@
+import React, { Component } from 'react';
 import {Scene, Router} from 'react-native-router-flux';
 import {View} from 'react-native';
-import React, { Component } from 'react';
 import Map from '../routes/Map';
 import Landing from '../routes/Landing';
 import AdditionalFeatures from '../routes/AdditionalFeatures';

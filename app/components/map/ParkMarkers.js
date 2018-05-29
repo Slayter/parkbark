@@ -50,7 +50,7 @@ class ParkMarkers extends Component {
                 }}
                 key={marker.title + i}
                 coordinate={marker.latlng}
-                image={require('../../img/map-pin@2x.png')}
+                image={require('../../img/map-pin.png')}
                 title={marker.title}
                 description={marker.address_display + ' apx. ' + getDistance(position.latitude, position.longitude, marker.latlng.latitude, marker.latlng.longitude) + ' mi'}
                 onCalloutPress={() => {this.onCalloutPress(marker.title)}}

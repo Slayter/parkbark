@@ -1,4 +1,5 @@
-import { NetInfo, Alert, View, BackAndroid} from 'react-native';
+import React from 'react';
+import {NetInfo, Alert, View, BackHandler} from 'react-native';
 
 
 class NetworkAlert {
@@ -11,7 +12,7 @@ class NetworkAlert {
                     'Network Offline',
                     'Sorry, but WIFI is necessary to use our app',
                     [
-                        {text: 'OK', onPress: () => {BackAndroid.exitApp()}},
+                        {text: 'OK', onPress: () => {BackHandler.exitApp()}},
                     ],
                     {
                         cancelable: false
@@ -31,7 +32,7 @@ class NetworkAlert {
                     'Network Offline',
                     'Sorry, but WIFI is necessary to use our app',
                     [
-                        {text: 'OK', onPress: () => {BackAndroid.exitApp()}},
+                        {text: 'OK', onPress: () => {BackHandler.exitApp()}},
                     ],
                     {
                         cancelable: false

@@ -42,7 +42,7 @@ class SearchFieldComponent extends Component {
         hitSlop={{top: 10, left: 10, bottom: 10, right: 10}}
         underlayColor="gray"
         onPress={this.fetchParks.bind(this)}>
-      <Image source={require('../../img/magnify@3x.png')} style={styles.searchIcon}/>
+      <Image source={require('../../img/magnify.png')} style={styles.searchIcon}/>
     </TouchableOpacity>
   }
 
@@ -52,7 +52,7 @@ class SearchFieldComponent extends Component {
         hitSlop={{top: 10, left: 10, bottom: 10, right: 10}}
         onPress={this.props.onPress}
         style={styles.filterIconWrapper}>
-      <Image source={require('../../img/empty_filter@3x.png')} style={styles.filterIcon}/>
+      <Image source={require('../../img/empty_filter.png')} style={styles.filterIcon}/>
     </TouchableOpacity>
   }
 

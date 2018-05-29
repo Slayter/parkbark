@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
     View,
     StyleSheet,
-    BackAndroid
 } from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';

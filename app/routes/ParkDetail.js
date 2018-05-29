@@ -9,9 +9,9 @@ import {
     Image,
     TouchableOpacity,
     Linking,
-    BackAndroid
+    BackHandler
 } from 'react-native';
-var ResponsiveImage = require('react-native-responsive-image');
+// var ResponsiveImage = require('react-native-responsive-image');
 import Share from 'react-native-share';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card.js';
@@ -21,7 +21,7 @@ import ParkListDetail from '../components/park_list/ParkListDetail.js'
 import FilterDetail from '../components/amenity_filter/FilterDetail';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-
+import ResponsiveImage from 'react-native-responsive-image';
 
 
 class ParkDetail extends Component {
@@ -31,11 +31,11 @@ class ParkDetail extends Component {
   }
 
   componentWillMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this.pushToadCTA);
+		BackHandler.addEventListener('hardwareBackPress', this.pushToadCTA);
   };
 
   componentWillUnmount() {
-    BackAndroid.removeEventListener('hardwareBackPress', this.pushToadCTA);
+		BackHandler.removeEventListener('hardwareBackPress', this.pushToadCTA);
   }
 
   shouldComponentUpdate() {
@@ -142,12 +142,12 @@ class ParkDetail extends Component {
             <TouchableOpacity
                 onPress={this.onBackPress.bind(this)}
                 style={{position: 'absolute', top: 20, left: 20}}>
-              <Image style={{width: 25, height: 25, padding: 10}} source={require('../img/back-arrow@3x.png')}/>
+              <Image style={{width: 25, height: 25, padding: 10}} source={require('../img/back-arrow.png')}/>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={this.onSharePress.bind(this)}
                 style={{position: 'absolute', top: 20, right: 20}}>
-              <Image style={{width: 25, height: 27, padding: 10}} source={require('../img/share@2x.png')}/>
+              <Image style={{width: 25, height: 27, padding: 10}} source={require('../img/share.png')}/>
             </TouchableOpacity>
             {/* End top image stack */}
 
@@ -159,7 +159,7 @@ class ParkDetail extends Component {
                     <Card>
                       <CardSection>
                         <AdMobBanner
-                            bannerSize="banner"
+													adSize="banner"
                             //   adUnitID="ca-app-pub-3940256099942544/6300978111" // test
                             adUnitID="ca-app-pub-7642882868968646/2620967210" //Park Bark test
                             testDeviceID="EMULATOR"
@@ -181,7 +181,7 @@ class ParkDetail extends Component {
         </ScrollView>
         <Button
           bgimage={require('../img/orange-gradient.png')}
-          icon={require('../img/check-in@3x.png')}
+          icon={require('../img/check-in.png')}
           text={'  CHECK IN '}
           textColor={'#fff'}
           alignSelf={'flex-end'}

@@ -67,7 +67,7 @@ class AdInterstitial extends Component {
                 </Text>
               </View>
                 <AdMobBanner
-                  bannerSize="mediumRectangle"
+									adSize="mediumRectangle"
                 //   adUnitID="ca-app-pub-3940256099942544/6300978111" // test
                   adUnitID="ca-app-pub-7642882868968646/4239983211" //Park Bark interstitial
                   testDeviceID="EMULATOR"

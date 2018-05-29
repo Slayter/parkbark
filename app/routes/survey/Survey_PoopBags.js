@@ -3,7 +3,8 @@ import { StyleSheet, View, TouchableHighlight, Text, TouchableOpacity, Image } f
 import { connect } from 'react-redux';
 import { sendSurveyResponses } from '../../src/survey_core';
 import Button from '../../components/common/Button.js';
-import { Form, InputField } from 'react-native-form-generator';
+// import { Form, InputField } from 'react-native-form-generator';
+import { Form, InputField } from './../../components/form_generator';
 import { Actions } from 'react-native-router-flux';
 
 class Survey_PoopBags extends Component {
@@ -52,7 +53,7 @@ class Survey_PoopBags extends Component {
         if(this.props.suggestPark) {
           return Actions.thanks({suggestPark: true})
         }
-        Actions.thanks();
+        Actions.thanks({suggestPark: false});
       });
   }
 

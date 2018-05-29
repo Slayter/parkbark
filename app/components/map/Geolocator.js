@@ -1,3 +1,4 @@
+import React from 'react';
 import {Map} from 'immutable';
 import {PermissionsAndroid, Alert} from 'react-native';
 import LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
