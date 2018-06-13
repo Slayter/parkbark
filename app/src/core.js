@@ -1,6 +1,6 @@
 
 export function setNotifcations(state, notificationState) {
-  return state.set('notifications', notificationState)
+  return state.set('notifications', notificationState);
 }
 
 export function setLoading(state, loadingState) {
@@ -8,6 +8,6 @@ export function setLoading(state, loadingState) {
 }
 
 export function setAdsRemove(state, adState) {
-  return state.set('adsRemove', adState)
+  return state.set('adsRemove', adState);
 }
 
