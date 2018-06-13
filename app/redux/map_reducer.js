@@ -1,7 +1,14 @@
-import {Map} from 'immutable';
-import {setLocations, recordLocation, setPosition, updateAnnotations, mapHide, updateRegion} from '../src/map_core';
+import { Map } from 'immutable';
+import {
+  setLocations,
+  recordLocation,
+  setPosition,
+  updateAnnotations,
+  mapHide,
+  updateRegion
+} from '../src/map_core';
 
-export default function(state = Map({}), action) {
+export default function (state = Map({}), action) {
   switch (action.type) {
     case 'SET_LOCATION':
       return setLocations(state, action.state);
@@ -17,6 +24,7 @@ export default function(state = Map({}), action) {
       return mapHide(state, action.state);
     case 'UPDATE_REGION':
       return updateRegion(state, action.state);
+    default:
+      return state;
   }
-  return state;
 }
