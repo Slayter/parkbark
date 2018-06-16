@@ -1,34 +1,32 @@
-import  React, {Component} from 'react';
-import {View, TouchableOpacity, Text, Image} from 'react-native';
+import React, { Component } from 'react';
+import { View, TouchableOpacity, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import Card from '../common/Card.js';
 
 class FilterDetail extends Component {
-
-
-  //adds staged for add or remove prop to park amenity object in immutable state.
-  onPress() {
-    const {currentFilterIndex} = this.props;
+  // adds staged for add or remove prop to park amenity object in immutable state.
+  onPress = () => {
+    const { currentFilterIndex } = this.props;
     const { staged, selected } = this.props.currentFilter;
-    if(staged === 'add' || selected ) {
-      this.props.dispatch({type: 'REMOVE_STAGED_FILTER', state: currentFilterIndex});
+    if (staged === 'add' || selected) {
+      this.props.dispatch({ type: 'REMOVE_STAGED_FILTER', state: currentFilterIndex });
       this.fontFamily = 'Source Sans Pro 200';
       this.image = null;
     }
-    if(!staged & !selected || staged === 'remove') {
-      this.props.dispatch({type: 'ADD_STAGED_FILTER', state: currentFilterIndex});
+    if (!staged & !selected || staged === 'remove') {
+      this.props.dispatch({ type: 'ADD_STAGED_FILTER', state: currentFilterIndex });
       this.fontFamily = 'Source Sans Pro 700';
       this.image = require('../../img/Ok.png');
     }
-  }
+  };
 
   render() {
     const { staged, selected } = this.props.currentFilter;
-    if (selected || staged === 'add' ) {
+    if (selected || staged === 'add') {
       this.fontFamily = 'Source Sans Pro 700';
       this.image = require('../../img/Ok.png');
     }
-    if (!staged & !selected || staged === 'remove')  {
+    if (!staged & !selected || staged === 'remove') {
       this.fontFamily = 'Source Sans Pro 200';
       this.image = null;
     }
@@ -39,28 +37,28 @@ class FilterDetail extends Component {
     }
 
     return (
-        <View>
-            <TouchableOpacity
-                disabled={this.props.disabled}
-                onPress={this.onPress.bind(this)}>
-              <Card>
-                  <Text  style={{fontFamily: this.fontFamily}} >{this.props.filter}</Text>
-                  <View style={{borderRadius: 10, overflow: 'hidden'}}>
-                    <Image style={{ width: 20, height: 20, overflow: 'hidden'}} source={this.image || null} />
-                  </View>
-              </Card>
-          </TouchableOpacity>
-        </View>
-    )
+      <View>
+        <TouchableOpacity
+          disabled={this.props.disabled}
+          onPress={this.onPress}
+        >
+          <Card>
+            <Text style={{ fontFamily: this.fontFamily }} >{this.props.filter}</Text>
+            <View style={{ borderRadius: 10, overflow: 'hidden' }}>
+              <Image style={{ width: 20, height: 20, overflow: 'hidden' }} source={this.image || null} />
+            </View>
+          </Card>
+        </TouchableOpacity>
+      </View>
+    );
   }
 }
 
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    currentFilterIndex: state.getIn(['filter','amenities']).toJS().findIndex(a => a['name'] === ownProps.filter),
-    currentFilter: state.getIn(['filter','amenities']).toJS().find((a) => a['name'] === ownProps.filter)
-  }
-}
+const mapStateToProps = (state, ownProps) => ({
+  currentFilterIndex: state.getIn(['filter', 'amenities']).toJS().findIndex(a => a.name === ownProps.filter),
+  currentFilter: state.getIn(['filter', 'amenities']).toJS().find(a => a.name === ownProps.filter)
+});
+
 
 export default connect(mapStateToProps)(FilterDetail);

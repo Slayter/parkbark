@@ -1,122 +1,111 @@
-'use strict';
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactNative from 'react-native';
-import {InputComponent} from '../lib/InputComponent';
+import { StyleSheet } from 'react-native';
+import { InputComponent } from '../lib/InputComponent';
 
-const {StyleSheet} = ReactNative;
-
-export class InputField extends React.Component{
-  handleValidation(isValid, validationErrors){
-    this.valid = isValid;
-    this.validationErrors = validationErrors;
-  }
-  setValue(value){
-    this.refs.fieldComponent.setValue(value)
-  }
-  focus(){
-    this.refs.fieldComponent.focus()
-  }
-  render(){
-    return(<InputComponent
-      {...this.props}
-
-      ref='fieldComponent'
-      onValidation={this.handleValidation.bind(this)}
-      labelStyle={[formStyles.fieldText, this.props.labelStyle]}
-
-      inputStyle={[formStyles.input,
-          (this.props.multiline)?formStyles.multiline:{},
-          (this.props.label)?formStyles.textRight:{},
-          this.props.style
-        ]}
-      containerStyle={[formStyles.fieldContainer,
-            formStyles.horizontalContainer,
-            this.props.containerStyle,
-          ]}
-      />
-    )
-  }
-
-}
-
-InputField.propTypes = {
-  multiline: PropTypes.bool,
-  placeholder:PropTypes.string,
-}
-
-
-let fieldStyles =StyleSheet.create({
-  input:{
+const fieldStyles = StyleSheet.create({
+  input: {
     paddingLeft: 10,
     paddingRight: 10,
   },
 });
 
-let formStyles = StyleSheet.create({
-  form:{
-
+const formStyles = StyleSheet.create({
+  form: {
   },
-  alignRight:{
-    marginTop: 7, position:'absolute', right: 10
+  alignRight: {
+    marginTop: 7,
+    position: 'absolute',
+    right: 10
   },
-  textRight:{
+  textRight: {
     textAlign: 'right'
   },
-  multiline:{
+  multiline: {
     lineHeight: 32,
-    fontSize: 34/2,
-    paddingBottom:10
+    fontSize: 34 / 2,
+    paddingBottom: 10
   },
-  separatorContainer:{
+  separatorContainer: {
     // borderTopColor: '#C8C7CC',
     // borderTopWidth: 1,
     paddingTop: 35,
     borderBottomColor: '#C8C7CC',
     borderBottomWidth: 1,
-
   },
-
-  fieldsWrapper:{
+  fieldsWrapper: {
     // borderTopColor: '#afafaf',
     // borderTopWidth: 1,
   },
-  horizontalContainer:{
+  horizontalContainer: {
     flexDirection: 'row',
-
     justifyContent: 'flex-start'
   },
-  fieldContainer:{
+  fieldContainer: {
     borderBottomWidth: 1,
     borderBottomColor: '#C8C7CC',
     backgroundColor: 'white',
     justifyContent: 'center',
   },
-  fieldText:{
-    fontSize: 34/2,
+  fieldText: {
+    fontSize: 34 / 2,
     paddingLeft: 10,
     paddingRight: 10,
     justifyContent: 'center',
     lineHeight: 32,
-
   },
-  input:{
+  input: {
     paddingLeft: 10,
     paddingRight: 10,
-
   },
-  helpTextContainer:{
-    marginTop:9,
+  helpTextContainer: {
+    marginTop: 9,
     marginBottom: 25,
     paddingLeft: 20,
     paddingRight: 20,
-
   },
-  helpText:{
+  helpText: {
     color: '#7a7a7a'
   }
 });
+
+export class InputField extends React.Component {
+  setValue(value) {
+    this.refs.fieldComponent.setValue(value);
+  }
+  handleValidation = (isValid, validationErrors) => {
+    this.valid = isValid;
+    this.validationErrors = validationErrors;
+  };
+  focus() {
+    this.refs.fieldComponent.focus();
+  }
+  render() {
+    return (
+      <InputComponent
+        {...this.props}
+        ref="fieldComponent"
+        onValidation={this.handleValidation}
+        labelStyle={[formStyles.fieldText, this.props.labelStyle]}
+        inputStyle={[
+          formStyles.input,
+          (this.props.multiline) ? formStyles.multiline : {},
+          (this.props.label) ? formStyles.textRight : {},
+          this.props.style
+        ]}
+        containerStyle={[formStyles.fieldContainer,
+          formStyles.horizontalContainer,
+          this.props.containerStyle,
+        ]}
+      />
+    );
+  }
+}
+
+InputField.propTypes = {
+  multiline: PropTypes.bool,
+  placeholder:PropTypes.string,
+};
 
 
 {/*<View

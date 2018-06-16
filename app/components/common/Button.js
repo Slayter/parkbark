@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import {
-  TouchableHighlight,
-  StyleSheet,
   Text,
   Image,
-  ImageBackground,
   Dimensions,
   View,
   TouchableOpacity
@@ -41,12 +38,12 @@ export default class Button extends Component {
         color: this.props.textColor,
         fontFamily: this.props.font,
         marginTop: 0
-    },
+			},
       buttonIcon: {
         alignSelf: 'center',
         minHeight: 12,
         minWidth: 15,
-    },
+			},
 			container: {
 				position: 'absolute',
 				top: 0,
@@ -55,16 +52,16 @@ export default class Button extends Component {
 				right: 0,
 				justifyContent: 'center',
 				alignItems: 'center',
-        flexDirection: 'row'
-      }
-    }
+				flexDirection: 'row'
+			}
+		};
 
     return (
       <TouchableOpacity
         style={styles.button}
-        underlayColor={'transparent'}
+        underlayColor="transparent"
         onPress={this.props.onPress}
-    >
+			>
 				<Image source={this.props.bgimage} style={styles.wrapper} />
 				<View style={styles.container}>
 					<Image style={styles.buttonIcon} source={this.props.icon} />
