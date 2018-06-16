@@ -1,80 +1,19 @@
 import React, { Component } from 'react';
 import {
-    View,
-    Image,
-    StyleSheet,
-    Text,
-    Platform,
-    NetInfo,
-    Alert,
-    BackHandler
+  View,
+  Image,
+  StyleSheet,
+  Text,
+  Platform,
+  BackHandler
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Button from '../components/common/Button.js';
-import {fetchAmenitiesAction} from '../src/filter_core';
+import { fetchAmenitiesAction } from '../src/filter_core';
 import networkAlert from '../components/common/NetworkAlert';
 
-class Landing extends Component {
-	componentWillMount() {
-	// TODO: configure notifications for IOS
-	// if (Platform.OS === 'ios') {
-	//   PushNotification.checkPermissions((response) => {
-	//     for (var item in response) {
-	//       if (response[item]) {
-	//         this.props.dispatch({type: 'SET_NOTIFICATIONS', state: true})
-	//         break
-	//       }
-	//     }
-	//   })
-	// }
-	
-}
-
-  componentDidMount() {
-    fetchAmenitiesAction().done((amenities) => {
-      if (!amenities) {
-        return networkAlert.checkConnection();
-      }
-      this.props.dispatch({type: 'SET_AMENITIES', state: amenities})
-    });
-		BackHandler.addEventListener('hardwareBackPress', () => {
-			BackHandler.exitApp();
-      return true
-    });
-  }
-  render() {
-    return (
-      <View style={styles.wrapper}>
-        <View style={styles.container}>
-          <View style={styles.imageContainer}>
-            <Image source={require('../img/welcomePup.png')}/>
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.title} type="text">Find dog parks near you.</Text>
-            <Text style={styles.text}>
-              Looking for just the perfect place to let your dog run free? Fenced? Water available? We've got all of the
-              details you're looking for.
-            </Text>
-          </View>
-          <Button bgimage={require('../img/orange-gradient-long.png')} icon={require('../img/forward-arrow.png')} alignSelf={'center'} onPress={this.onNextPress}/>
-        </View>
-      </View>
-    );
-  }
-
-  onNextPress = () => {
-    if (this.props.notificationState || Platform.OS === 'android') {
-      Actions.map();
-    } else {
-      // TODO:Handle notification check for IOS
-      // this.props.navigator.push({name: 'features'});
-    }
-  }
-}
-
-
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -90,7 +29,7 @@ var styles = StyleSheet.create({
     maxWidth: 500,
   },
   imageContainer: {
-  //  marginTop: 20,
+    //  marginTop: 20,
   },
   textContainer: {
     marginBottom: 10
@@ -111,11 +50,73 @@ var styles = StyleSheet.create({
   }
 });
 
+class Landing extends Component {
+  componentWillMount() {
+  // TODO: configure notifications for IOS
+  // if (Platform.OS === 'ios') {
+  //   PushNotification.checkPermissions((response) => {
+  //     for (var item in response) {
+  //       if (response[item]) {
+  //         this.props.dispatch({type: 'SET_NOTIFICATIONS', state: true})
+  //         break
+  //       }
+  //     }
+  //   })
+  // }
+  }
 
-const mapStateToProps = (state) => {
-  return {
-    notificationState: state.getIn(['core','notifications'])
+  componentDidMount() {
+    fetchAmenitiesAction().done((amenities) => {
+      if (!amenities) {
+        return networkAlert.checkConnection();
+      }
+      this.props.dispatch({ type: 'SET_AMENITIES', state: amenities });
+    });
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      BackHandler.exitApp();
+      return true;
+    });
+  }
+
+  onNextPress = () => {
+    if (this.props.notificationState || Platform.OS === 'android') {
+      Actions.map();
+    } else {
+      // TODO:Handle notification check for IOS
+      // this.props.navigator.push({name: 'features'});
+    }
+  };
+
+  render() {
+    return (
+      <View style={styles.wrapper}>
+        <View style={styles.container}>
+          <View style={styles.imageContainer}>
+            <Image source={require('../img/welcomePup.png')} />
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.title} type="text">Find dog parks near you.</Text>
+            <Text style={styles.text}>
+              {`Looking for just the perfect place to let your dog run free? Fenced? Water available? We've got all of the
+              details you're looking for.`}
+            </Text>
+          </View>
+          <Button
+            bgimage={require('../img/orange-gradient-long.png')}
+            icon={require('../img/forward-arrow.png')}
+            alignSelf="center"
+            onPress={this.onNextPress}
+          />
+        </View>
+      </View>
+    );
   }
 }
+
+
+const mapStateToProps = state => ({
+  notificationState: state.getIn(['core', 'notifications'])
+});
+
 
 export default connect(mapStateToProps)(Landing);
