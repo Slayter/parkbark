@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Rate, { AndroidMarket } from 'react-native-rate'
-import { View, Text, FlatList, TouchableOpacity, Platform } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Platform, Linking } from 'react-native';
+import Rate, { AndroidMarket } from 'react-native-rate';
 import { styles } from './styles';
 
 export class SideMenu extends Component {
@@ -31,6 +31,13 @@ export class SideMenu extends Component {
 				});
 				break;
 			case 1:
+				Linking.canOpenURL('https://www.surveymonkey.com/r/WRS5D5V').then(supported => {
+					if (supported) {
+						Linking.openURL('https://www.surveymonkey.com/r/WRS5D5V');
+					} else {
+						console.log("Don't know how to open URI: ", 'https://www.surveymonkey.com/r/WRS5D5V');
+					}
+				});
 				break;
 			default:
 				break;
