@@ -50,6 +50,10 @@ class ParkMap extends Component {
     Actions.filterlist();
   };
 
+	onShowDrawer = () => {
+		Actions.drawerOpen();
+  };
+
   regionShow = () => {
     this.props.dispatch({ type: 'MAP_HIDE', state: true });
   };
@@ -83,7 +87,10 @@ class ParkMap extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <SearchField onPress={this.showFilters} />
+        <SearchField
+          onPress={this.showFilters}
+					onShowDrawer={this.onShowDrawer}
+        />
         <View style={styles.mapContainer}>
           <Loading />
           <MapView
