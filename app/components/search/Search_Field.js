@@ -36,7 +36,9 @@ const styles = StyleSheet.create({
 		borderRadius: 2
 	},
 	searchIcon: {
-		marginRight: 5
+		marginRight: 5,
+		width: 20,
+		resizeMode: 'contain'
 	},
 	filterIconWrapper: {
 		backgroundColor: '#fff',
@@ -45,14 +47,15 @@ const styles = StyleSheet.create({
 		marginLeft: 5
 	},
 	input: {
-		maxWidth: 250,
+		// maxWidth: 250,
 		// fontSize: 13,
 		paddingTop: 0,
 		paddingBottom: 0,
 		color: '#5e5e5e',
 		fontFamily: 'Source Sans Pro regular',
 		lineHeight: 23,
-		flex: 1
+		flex: 1,
+		marginLeft: 15
 	}
 });
 
@@ -64,7 +67,8 @@ class SearchFieldComponent extends Component {
 					{this.searchParksInput()}
 					<TextInput
 						onChangeText={this.handleChange.bind(this)}
-						placeholder="Address, Zip, City"
+						// placeholder="Address, Zip, City"
+						placeholder="Search location"
 						placeholderTextColor="#5e5e5e"
 						underlineColorAndroid="rgba(0,0,0,0)"
 						style={styles.input}
@@ -89,8 +93,9 @@ class SearchFieldComponent extends Component {
     return <TouchableOpacity
         hitSlop={{ top: 10, left: 10, bottom: 10, right: 10 }}
         underlayColor="gray"
-        onPress={this.fetchParks.bind(this)}>
-      <Image source={require('../../img/magnify.png')} style={styles.searchIcon}/>
+        // onPress={this.fetchParks.bind(this)}>
+        onPress={this.props.onShowDrawer}>
+      <Image source={require('../../img/icon_hamburger.png')} style={styles.searchIcon}/>
     </TouchableOpacity>
   }
 
