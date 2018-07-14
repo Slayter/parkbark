@@ -3,6 +3,7 @@ package com.parkbark;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNRate.RNRatePackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 import cl.json.RNSharePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNRatePackage(),
             new RNSharePackage(),
             new RNDeviceInfo(),
             new InAppBillingBridgePackage(),

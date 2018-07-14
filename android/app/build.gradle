@@ -147,6 +147,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-rate')
     implementation project(':react-native-share')
     implementation project(':react-native-device-info')
     implementation project(':react-native-billing')
