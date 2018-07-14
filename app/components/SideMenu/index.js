@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import Rate, { AndroidMarket } from 'react-native-rate'
+import { View, Text, FlatList, TouchableOpacity, Platform } from 'react-native';
 import { styles } from './styles';
 
 export class SideMenu extends Component {
@@ -12,6 +13,29 @@ export class SideMenu extends Component {
 			]
 		}
 	}
+	
+	onPress = (index) => {
+		let options = {
+			GooglePackageName: 'com.parkbark',
+			AmazonPackageName: 'com.parkbark',
+			preferredAndroidMarket: Platform.OS !== 'ios' ? AndroidMarket.Google : AndroidMarket.Amazon,
+			fallbackPlatformURL:"http://parkbarkapp.site"
+		};
+		switch (index) {
+			case 0:
+				Rate.rate(options, (success) => {
+					if (success) {
+						// this technically only tells us if the user successfully went to the Review Page. Whether they actually did anything, we do not know.
+						console.info('success', success);
+					}
+				});
+				break;
+			case 1:
+				break;
+			default:
+				break;
+		}
+	};
 	
 	renderHeaderContainer = () => {
 		return (
@@ -27,7 +51,7 @@ export class SideMenu extends Component {
 	
 	renderItem = ({ item }) => {
 		return (
-			<TouchableOpacity style={styles.itemContainer}>
+			<TouchableOpacity style={styles.itemContainer} onPress={() => this.onPress(item.index)}>
 				<Text style={styles.itemText}>
 					{item.label}
 				</Text>
