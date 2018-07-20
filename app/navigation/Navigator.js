@@ -37,34 +37,35 @@ class NavigatorComponent extends Component {
       <Router>
         <Scene key="root">
           <Scene hideNavBar={true} key="landing" component={Landing} initial={true} />
-          <Drawer
+					<Drawer
             key="drawerMenu"
             contentComponent={SideMenu}
             drawerWidth={280}
 						hideNavBar
 						hideDrawerButton={true}
-          >
+					>
             <Scene hideNavBar={true} key="map" component={Map} />
-            <Scene hideNavBar={true} key="surveyNumDogs" component={Survey_NumDogs} />
-            <Scene hideNavBar={true} key="surveyFencedArea" component={Survey_FencedArea} />
-            <Scene hideNavBar={true} key="surveyOffLeash" component={Survey_OffLeash} />
-            <Scene hideNavBar={true} key="surveySmallDogs" component={Survey_SmallDogs} />
-            <Scene hideNavBar={true} key="surveyDrinkingWater" component={Survey_DrinkingWater} />
-            <Scene hideNavBar={true} key="surveyPoopBags" component={Survey_PoopBags} />
-            <Scene hideNavBar={true} key="surveyHikingTrails" component={Survey_HikingTrails} />
-            <Scene hideNavBar={true} key="surveyShade" component={Survey_Shade} />
-            <Scene hideNavBar={true} key="surveyBenches" component={Survey_Benches} />
-            <Scene hideNavBar={true} key="surveyCoveredArea" component={Survey_CoveredArea} />
-            <Scene hideNavBar={true} key="surveyRestrooms" component={Survey_Restrooms} />
-            <Scene hideNavBar={true} key="surveyAgilityCourse" component={Survey_AgilityCourse} />
-            <Scene hideNavBar={true} key="surveyNotes" component={Survey_Notes} />
-            <Scene hideNavBar={true} key="parkName" component={Survey_ParkName} />
-            <Scene hideNavBar={true} key="parkAddress" component={Survey_ParkAddress} />
-            <Scene hideNavBar={true} key="thanks" component={ThankYou} />
-            <Scene hideNavBar={true} key="parkdetail" component={ParkDetail} />
-            <Scene hideNavBar={true} key="adCTA" panHandlers={null} component={AdInterstitial} />
-            <Scene hideNavBar={true} key="filterlist" component={FilterList} />
-          </Drawer>
+					</Drawer>
+					{/*<Scene hideNavBar={true} key="map" component={Map} />*/}
+          <Scene hideNavBar={true} key="surveyNumDogs" component={Survey_NumDogs} />
+          <Scene hideNavBar={true} key="surveyFencedArea" component={Survey_FencedArea} />
+          <Scene hideNavBar={true} key="surveyOffLeash" component={Survey_OffLeash} />
+          <Scene hideNavBar={true} key="surveySmallDogs" component={Survey_SmallDogs} />
+          <Scene hideNavBar={true} key="surveyDrinkingWater" component={Survey_DrinkingWater} />
+          <Scene hideNavBar={true} key="surveyPoopBags" component={Survey_PoopBags} />
+          <Scene hideNavBar={true} key="surveyHikingTrails" component={Survey_HikingTrails} />
+          <Scene hideNavBar={true} key="surveyShade" component={Survey_Shade} />
+          <Scene hideNavBar={true} key="surveyBenches" component={Survey_Benches} />
+          <Scene hideNavBar={true} key="surveyCoveredArea" component={Survey_CoveredArea} />
+          <Scene hideNavBar={true} key="surveyRestrooms" component={Survey_Restrooms} />
+          <Scene hideNavBar={true} key="surveyAgilityCourse" component={Survey_AgilityCourse} />
+          <Scene hideNavBar={true} key="surveyNotes" component={Survey_Notes} />
+          <Scene hideNavBar={true} key="parkName" component={Survey_ParkName} />
+          <Scene hideNavBar={true} key="parkAddress" component={Survey_ParkAddress} />
+          <Scene hideNavBar={true} key="thanks" component={ThankYou} />
+          <Scene hideNavBar={true} key="parkdetail" component={ParkDetail} />
+          <Scene hideNavBar={true} key="adCTA" panHandlers={null} component={AdInterstitial} />
+          <Scene hideNavBar={true} key="filterlist" component={FilterList} />
         </Scene>
       </Router>
     );
