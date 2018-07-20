@@ -19,9 +19,13 @@ class ThankYou extends Component {
   changeScene = () => {
     console.info('this.props', this.props);
     if (this.props.suggestPark) {
-      return Actions.popTo('map');
-    }
-    Actions.popTo('parkdetail');
+      // return Actions.popTo('map');
+      // Actions.pop();
+      // Actions.pop();
+      Actions.reset('drawerMenu');
+    } else {
+			Actions.popTo('parkdetail');
+		}
   };
   render() {
     return (
