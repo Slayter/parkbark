@@ -7,12 +7,12 @@ import {googleapi} from '../../api/googleapi.js';
 
 const styles = StyleSheet.create({
 	fieldContainer: {
-		backgroundColor: 'rgba(0,0,0,0)',
+		backgroundColor: '#fff',
 		position: 'absolute',
 		zIndex: 2,
 		top: 20,
-		left: 0,
-		right: 0,
+		left: 10,
+		right: 10,
 		flex: 1,
 		alignSelf: 'stretch',
 		flexDirection: 'row',
@@ -20,6 +20,13 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		paddingLeft: 10,
 		paddingRight: 10,
+		shadowColor: '#000',
+		shadowOffset: {width: 0, height: 2 },
+		shadowOpacity: 0.24,
+		shadowRadius: 4,
+		elevation: 4,
+		borderRadius: 2,
+		paddingVertical: 7
 	},
 	inputWrapper: {
 		backgroundColor: '#fff',
@@ -28,15 +35,10 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		padding: 7,
-		shadowColor: '#000',
-		shadowOffset: {width: 0, height: 2 },
-		shadowOpacity: 0.24,
-		shadowRadius: 4,
-		elevation: 4,
-		borderRadius: 2
 	},
 	searchIcon: {
 		marginRight: 5,
+		marginLeft: 7,
 		width: 20,
 		resizeMode: 'contain'
 	},
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
 		// fontSize: 13,
 		paddingTop: 0,
 		paddingBottom: 0,
-		color: '#5e5e5e',
+		color: '#8B8B8B',
 		fontFamily: 'Source Sans Pro regular',
 		lineHeight: 23,
 		flex: 1,
@@ -63,19 +65,17 @@ class SearchFieldComponent extends Component {
   render() {
     return (
 			<View style={styles.fieldContainer}>
-				<View style={styles.inputWrapper}>
-					{this.searchParksInput()}
-					<TextInput
-						onChangeText={this.handleChange.bind(this)}
-						// placeholder="Address, Zip, City"
-						placeholder="Search location"
-						placeholderTextColor="#5e5e5e"
-						underlineColorAndroid="rgba(0,0,0,0)"
-						style={styles.input}
-						onSubmitEditing={this.fetchParks.bind(this)}
-					/>
-					{this.searchParksFilter()}
-				</View>
+				{this.searchParksInput()}
+				<TextInput
+					onChangeText={this.handleChange.bind(this)}
+					// placeholder="Address, Zip, City"
+					placeholder="Search location"
+					placeholderTextColor="#8B8B8B"
+					underlineColorAndroid="rgba(0,0,0,0)"
+					style={styles.input}
+					onSubmitEditing={this.fetchParks.bind(this)}
+				/>
+				{this.searchParksFilter()}
 			</View>
     )
   }
