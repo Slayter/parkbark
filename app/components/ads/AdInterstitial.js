@@ -35,11 +35,15 @@ const styles = StyleSheet.create({
 
 class AdInterstitial extends Component {
   onClose = () => {
-    Actions.popTo('map');
+    // Actions.popTo('drawerMenu');
+    Actions.pop();
+    Actions.pop();
   };
   keepAds = () => {
-    Actions.popTo('map');
-  };
+    // Actions.popTo('map');
+		Actions.pop();
+		Actions.pop();
+	};
   pay = async () => {
     const productId = 'com.parkbark.adsremoved';
     await InAppBilling.close();
