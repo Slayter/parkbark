@@ -97,8 +97,7 @@ class Landing extends Component {
           <View style={styles.textContainer}>
             <Text style={styles.title} type="text">Find dog parks near you.</Text>
             <Text style={styles.text}>
-              {`Looking for just the perfect place to let your dog run free? Fenced? Water available? We've got all of the
-              details you're looking for.`}
+              {`Looking for just the perfect place to let your dog run free? Fenced? Water available? We've got all of the details you're looking for.`}
             </Text>
           </View>
           <Button
