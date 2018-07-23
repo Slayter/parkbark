@@ -49,7 +49,7 @@ export class SideMenu extends Component {
 			<View style={styles.headerContainer}>
 				<View style={styles.headerSubContainer}>
 					<Text style={styles.headerText}>
-						Login or Sign up
+						Hello there!
 					</Text>
 				</View>
 			</View>
