@@ -16,22 +16,45 @@ import { updateParksByFilterAction } from '../../src/filter_core';
 
 const styles = {
   container: {
+    flex: 1,
     backgroundColor: '#fff'
   },
   filterScrollView: {
-    height: Dimensions.get('window').height - 100,
     padding: 10,
-    marginTop: 50,
     marginBottom: 20
   },
   filterTitle: {
     color: '#ef3a39',
     fontFamily: 'ArchivoNarrow-Bold',
-    fontSize: 12,
-    lineHeight: 19
+    fontSize: 16,
+    lineHeight: 20
   },
   buttonWrapper: {
     marginTop: 20
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    height: 55,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F0F0',
+    alignItems: 'center',
+    paddingHorizontal: 10
+  },
+  closeButton: {
+    marginLeft: 10
+  },
+  closeIcon: {
+    width: 20,
+    height: 20,
+    opacity: 0.67
+  },
+  headerText: {
+    textAlign: 'center',
+    flex: 1,
+    fontSize: 16
+  },
+  filterContainer: {
+    marginRight: 10
   }
 };
 
@@ -95,6 +118,7 @@ class FilterList extends Component {
 
   // renders all FilterDetail components
   renderFilters() {
+    console.info('this.props.amenities', this.props.amenities);
     return this.props.amenities.map(filter => (
       <FilterListDetail disabled={false} key={filter.name} filter={filter.name} />
     ));
@@ -103,41 +127,50 @@ class FilterList extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          onPress={this.onBackPress}
-          style={{
-            position: 'absolute', top: 30, right: 15, zIndex: 1
-          }}
-          hitSlop={{
-            top: 10, left: 10, bottom: 10, right: 10
-          }}
-        >
-          <Image style={{ width: 20, height: 20, opacity: 0.67 }} source={require('../../img/button_close.png')} />
-        </TouchableOpacity>
+        {/*<TouchableOpacity*/}
+          {/*onPress={this.onBackPress}*/}
+          {/*style={{*/}
+            {/*position: 'absolute', top: 30, left: 15, zIndex: 1*/}
+          {/*}}*/}
+        {/*>*/}
+          {/*<Image style={{ width: 20, height: 20, opacity: 0.67 }} source={require('../../img/button_close.png')} />*/}
+        {/*</TouchableOpacity>*/}
+        <View style={styles.headerContainer}>
+          <TouchableOpacity style={styles.closeButton} onPress={this.onBackPress}>
+						<Image style={styles.closeIcon} source={require('../../img/button_close.png')} />
+          </TouchableOpacity>
+					<Text style={styles.headerText}>
+						Amenities
+					</Text>
+					<TouchableOpacity style={styles.filterContainer} onPress={this.onFilterPress}>
+						<Text style={styles.filterTitle}>
+              Filter
+            </Text>
+					</TouchableOpacity>
+        </View>
         <ScrollView style={styles.filterScrollView}>
-          <Text style={styles.filterTitle}>Filter Parks</Text>
           {this.renderFilters()}
-          <View style={styles.buttonWrapper}>
-            <Button
-              bgimage={require('../../img/transparent.png')}
-              bgcolor="#fff"
-              text="Clear Filters"
-              alignSelf="center"
-              font="Source Sans Pro 200"
-              textColor="#8b8b8b"
-              fontSize={15}
-              onPress={this.onClearFiltersPress}
-            />
-            <Button
-              bgimage={require('../../img/red-gradient.png')}
-              text="Filter"
-              alignSelf="stretch"
-              textColor="#fff"
-              fontSize={15}
-              fontFamily="Source Sans Pro 700"
-              onPress={this.onFilterPress}
-            />
-          </View>
+          {/*<View style={styles.buttonWrapper}>*/}
+            {/*<Button*/}
+              {/*bgimage={require('../../img/transparent.png')}*/}
+              {/*bgcolor="#fff"*/}
+              {/*text="Clear Filters"*/}
+              {/*alignSelf="center"*/}
+              {/*font="Source Sans Pro 200"*/}
+              {/*textColor="#8b8b8b"*/}
+              {/*fontSize={15}*/}
+              {/*onPress={this.onClearFiltersPress}*/}
+            {/*/>*/}
+            {/*<Button*/}
+              {/*bgimage={require('../../img/red-gradient.png')}*/}
+              {/*text="Filter"*/}
+              {/*alignSelf="stretch"*/}
+              {/*textColor="#fff"*/}
+              {/*fontSize={15}*/}
+              {/*fontFamily="Source Sans Pro 700"*/}
+              {/*onPress={this.onFilterPress}*/}
+            {/*/>*/}
+          {/*</View>*/}
         </ScrollView>
       </View>
     );
