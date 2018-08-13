@@ -25,7 +25,7 @@ const styles = {
   },
   filterTitle: {
     color: '#ef3a39',
-    fontFamily: 'ArchivoNarrow-Bold',
+    fontFamily: 'Source sans pro 600',
     fontSize: 16,
     lineHeight: 20
   },
@@ -34,24 +34,29 @@ const styles = {
   },
   headerContainer: {
     flexDirection: 'row',
-    height: 55,
+    height: 45,
     borderBottomWidth: 1,
     borderBottomColor: '#F0F0F0',
     alignItems: 'center',
     paddingHorizontal: 10
   },
   closeButton: {
-    marginLeft: 10
-  },
-  closeIcon: {
+    marginLeft: 10,
     width: 20,
     height: 20,
-    opacity: 0.67
+		justifyContent: 'center'
+  },
+  closeIcon: {
+    width: 15,
+    height: 15,
+    opacity: 0.67,
+    resizeMode: 'contain'
   },
   headerText: {
     textAlign: 'center',
     flex: 1,
-    fontSize: 16
+    fontSize: 16,
+    color: '#131313'
   },
   filterContainer: {
     marginRight: 10

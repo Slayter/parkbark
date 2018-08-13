@@ -121,7 +121,7 @@ class FilterDetail extends Component {
     let svgColor = '#000';
     let status = false;
     if (selected || staged === 'add') {
-      this.fontFamily = 'Source Sans Pro 700';
+			this.fontFamily = 'Source Sans Pro Bold';
       this.image = require('../../img/Ok.png');
       svgColor = '#ff0000';
 			status = true;
@@ -134,10 +134,16 @@ class FilterDetail extends Component {
     }
 
     if (this.props.checked) {
-      this.fontFamily = 'Source Sans Pro 700';
+      this.fontFamily = 'Source Sans Pro Bold';
       this.image = require('../../img/Ok.png');
 			svgColor = '#ff0000';
 			status = true;
+		}
+		if (this.props.inactive) {
+			this.fontFamily = 'Source Sans Pro 200';
+			this.image = null;
+			svgColor = '#000';
+			status = false;
 		}
 
     const source = this.onGetSvgUri(this.props.filter, status);
