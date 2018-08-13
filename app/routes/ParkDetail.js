@@ -152,6 +152,7 @@ class ParkDetail extends Component {
         disabled={true}
         key={filter.name}
         filter={filter.name}
+        inactive={true}
       />
     ));
   }
