@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.RNRate.RNRatePackage;
+import com.horcrux.svg.SvgPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 import cl.json.RNSharePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -36,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
             new InAppBillingBridgePackage(),
             new LocationServicesDialogBoxPackage(),
             new RNAdMobPackage(),
-            new MapsPackage()
+            new MapsPackage(),
+            new SvgPackage()
       );
     }
 

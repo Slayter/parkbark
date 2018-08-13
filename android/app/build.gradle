@@ -101,8 +101,8 @@ android {
         applicationId "com.parkbark"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 26
-        versionName "0.0.22"
+        versionCode 31
+        versionName "0.0.23"
         multiDexEnabled true
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -147,7 +147,8 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-rate')
+    implementation project(':react-native-svg')
+    implementation project(':react-native-rate')
     implementation project(':react-native-share')
     implementation project(':react-native-device-info')
     implementation project(':react-native-billing')
