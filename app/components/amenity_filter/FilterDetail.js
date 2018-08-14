@@ -110,6 +110,41 @@ class FilterDetail extends Component {
 					uri = require('../../img/amenities/agility.png');
 				}
 				break;
+			case 'Covered area':
+				if (status) {
+					uri = require('../../img/amenities/red_covered_area.png');
+				} else {
+					uri = require('../../img/amenities/covered_area.png');
+				}
+				break;
+			case 'Drinking water':
+				if (status) {
+					uri = require('../../img/amenities/red_water.png');
+				} else {
+					uri = require('../../img/amenities/water.png');
+				}
+				break;
+			case 'Leash Only':
+				if (status) {
+					uri = require('../../img/amenities/red_leash.png');
+				} else {
+					uri = require('../../img/amenities/leash.png');
+				}
+				break;
+			case 'Fenced area':
+				if (status) {
+					uri = require('../../img/amenities/red_fenced.png');
+				} else {
+					uri = require('../../img/amenities/fenced.png');
+				}
+				break;
+			case 'Benches':
+				if (status) {
+					uri = require('../../img/amenities/red_benches.png');
+				} else {
+					uri = require('../../img/amenities/benches.png');
+				}
+				break;
       default:
         break;
 		}
