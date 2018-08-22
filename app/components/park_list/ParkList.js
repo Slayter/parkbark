@@ -6,7 +6,8 @@ import {
   PanResponder,
   Easing,
   Text,
-  Dimensions
+  Dimensions,
+  Linking
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -89,12 +90,13 @@ class ParkList extends Component {
 
 
   onNextPress = () => {
-    const updateValue = {};
-    updateValue.title = 'type';
-    updateValue.value = 0;
-    this.props.dispatch({ type: 'SET_PARK_SURVEY', state: 'Suggest a Park' });
-    this.props.dispatch({ type: 'UPDATE_SURVEY', state: updateValue });
-    Actions.parkName({ suggestPark: true });
+    Linking.canOpenURL('https://www.surveymonkey.com/r/QC3KVHS').then(supported => {
+      if (supported) {
+        Linking.openURL('https://www.surveymonkey.com/r/QC3KVHS');
+      } else {
+        console.log(`Don't know how to open URI: `, 'https://www.surveymonkey.com/r/QC3KVHS');
+      }
+    });
   };
   onEndReached = () => {
     let { showItemCount, parks } = this.state;

@@ -123,12 +123,13 @@ class ParkDetail extends Component {
   };
 
   surveyPress = () => {
-    const updateValue = {};
-    updateValue.title = 'type';
-    updateValue.value = 1;
-    this.props.dispatch({ type: 'SET_PARK_SURVEY', state: this.props.currentPark.title });
-    this.props.dispatch({ type: 'UPDATE_SURVEY', state: updateValue });
-    Actions.surveyNumDogs();
+    Linking.canOpenURL('https://www.surveymonkey.com/r/QQ2LRH6').then(supported => {
+      if (supported) {
+        Linking.openURL('https://www.surveymonkey.com/r/QQ2LRH6');
+      } else {
+        console.log(`Don't know how to open URI: `, 'https://www.surveymonkey.com/r/QQ2LRH6');
+      }
+    });
   };
 
   renderFilters() {
@@ -235,7 +236,6 @@ class ParkDetail extends Component {
             </Card>
             : null}
           {this.renderFilters()}
-        </ScrollView>
         <Button
           bgimage={require('../img/orange-gradient.png')}
           icon={require('../img/check-in.png')}
@@ -246,6 +246,7 @@ class ParkDetail extends Component {
           font="Source Sans Pro 700"
           onPress={this.surveyPress}
         />
+        </ScrollView>
       </View>
     );
   }
