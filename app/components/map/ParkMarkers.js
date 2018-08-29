@@ -24,7 +24,6 @@ import Svg,{
 	Defs,
 	Stop
 } from 'react-native-svg';
-import { Actions } from 'react-native-router-flux';
 import { googledistanceapi } from '../../api/googleapi.js';
 import { getDistance } from '../../src/map_core';
 
@@ -165,7 +164,7 @@ class ParkMarkers extends Component {
   onCalloutPress = (title) => {
     this.props.dispatch({type: 'UPDATE_SElECTED_PARK', state: title});
     // this.props.navigator.push({name:'parkdetail'});
-    Actions.parkdetail();
+	  this.props.navigation.navigate('parkdetail');
   };
 
   render() {

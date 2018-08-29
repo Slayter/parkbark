@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { StackActions, NavigationActions } from "react-navigation";
 import InAppBilling from 'react-native-billing';
 import { connect } from 'react-redux';
 import Button from '../common/Button';
@@ -35,14 +35,23 @@ const styles = StyleSheet.create({
 
 class AdInterstitial extends Component {
   onClose = () => {
-    // Actions.popTo('drawerMenu');
-    Actions.pop();
-    Actions.pop();
+  	console.info('this.props', this.props);
+	  const resetAction = StackActions.reset({
+		  index: 0,
+		  actions: [
+			  NavigationActions.navigate({ routeName: 'drawerMenu' })
+		  ]
+	  });
+	  this.props.navigation.dispatch(resetAction);
   };
   keepAds = () => {
-    // Actions.popTo('map');
-		Actions.pop();
-		Actions.pop();
+	  const resetAction = StackActions.reset({
+		  index: 0,
+		  actions: [
+			  NavigationActions.navigate({ routeName: 'drawerMenu' })
+		  ]
+	  });
+	  this.props.navigation.dispatch(resetAction);
 	};
   pay = async () => {
     const productId = 'com.parkbark.adsremoved';
@@ -71,7 +80,14 @@ class AdInterstitial extends Component {
     } finally {
       // await InAppBilling.consumePurchase(productId); //don't do this in production, just for testing -- makes the purchase expire so you can try again
       await InAppBilling.close();
-      await Actions.popTo('map');
+      // await Actions.popTo('map');
+	    const resetAction = StackActions.reset({
+		    index: 0,
+		    actions: [
+			    NavigationActions.navigate({ routeName: 'drawerMenu' })
+		    ]
+	    });
+	    this.props.navigation.dispatch(resetAction);
     }
   };
   render() {

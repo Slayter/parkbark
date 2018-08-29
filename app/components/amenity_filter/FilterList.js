@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Button from '../common/Button';
 import FilterListDetail from './FilterDetail';
@@ -99,7 +98,7 @@ class FilterList extends Component {
   onBackPress = () => {
     this.props.dispatch({ type: 'CLEAR_STAGED', state: false });
     // this.props.navigator.pop();
-    Actions.pop();
+    this.props.navigation.goBack();
   };
 
   // filters according to staged and selected, filter button must be pressed to add staged to selected
@@ -111,7 +110,7 @@ class FilterList extends Component {
     stagedFilters.forEach(i => dispatch({ type: 'ADD_FILTER', state: i }));
     stagedFiltersRemove.forEach(i => dispatch({ type: 'REMOVE_FILTER', state: i }));
     dispatch({ type: 'FILTER_SET', state: true });
-    Actions.pop();
+    this.props.navigation.goBack();
   };
 
   // clears all staged and selected on press

@@ -7,7 +7,6 @@ import {
   Platform,
   BackHandler
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Button from '../components/common/Button.js';
 import { fetchAmenitiesAction } from '../src/filter_core';
@@ -80,7 +79,7 @@ class Landing extends Component {
 
   onNextPress = () => {
     if (this.props.notificationState || Platform.OS === 'android') {
-      Actions.map();
+      this.props.navigation.navigate('drawerMenu');
     } else {
       // TODO:Handle notification check for IOS
       // this.props.navigator.push({name: 'features'});

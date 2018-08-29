@@ -9,7 +9,6 @@ import {
   Dimensions,
   Linking
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { isEqual } from 'lodash';
 import Button from '../common/Button.js';
@@ -85,7 +84,7 @@ class ParkList extends Component {
 
   onDetailPress = (title) => {
     this.props.dispatch({ type: 'UPDATE_SElECTED_PARK', state: title });
-    Actions.parkdetail();
+    this.props.navigation.navigate('parkdetail');
   };
 
 
@@ -225,6 +224,7 @@ class ParkList extends Component {
                 renderRow={this.renderParkListDetails}
                 onEndReached={this.onEndReached}
                 onEndReachedThreshold={10}
+                enableEmptySections
               />
             </View>
             :

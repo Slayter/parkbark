@@ -11,7 +11,6 @@ import {
   BackHandler
 } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import ResponsiveImage from 'react-native-responsive-image';
 // var ResponsiveImage = require('react-native-responsive-image');
 import Share from 'react-native-share';
@@ -90,9 +89,9 @@ class ParkDetail extends Component {
 
   onBackPress = () => {
     if (this.props.adsRemoved) {
-      return Actions.pop();
+      this.props.navigation.goBack();
     }
-    Actions.adCTA();
+    this.props.navigation.navigate('adCTA');
   };
 
   onSharePress = () => {
@@ -116,9 +115,9 @@ class ParkDetail extends Component {
 
   pushToadCTA = () => {
     if (this.props.adsRemoved) {
-      return Actions.pop();
+      return this.props.navigation.goBack();
     }
-    Actions.adCTA();
+	  this.props.navigation.navigate('adCTA');
     return true;
   };
 

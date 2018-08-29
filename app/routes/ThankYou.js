@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { NavigationActions } from 'react-navigation';
 
 const styles = StyleSheet.create({
   imageContainer: {
@@ -19,12 +19,15 @@ class ThankYou extends Component {
   changeScene = () => {
     console.info('this.props', this.props);
     if (this.props.suggestPark) {
-      // return Actions.popTo('map');
-      // Actions.pop();
-      // Actions.pop();
-      Actions.reset('drawerMenu');
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'drawerMenu' })
+        ]
+      });
+      this.props.navigation.dispatch(resetAction);
     } else {
-			Actions.popTo('parkdetail');
+			this.props.navigation.navigate('parkdetail');
 		}
   };
   render() {

@@ -3,7 +3,6 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
 import Loading from '../components/common/Loading';
@@ -47,11 +46,11 @@ class ParkMap extends Component {
   }
 
   showFilters = () => {
-    Actions.filterlist();
+    this.props.navigation.navigate('filterlist');
   };
 
 	onShowDrawer = () => {
-		Actions.drawerOpen();
+		this.props.navigation.openDrawer();
   };
 
   regionShow = () => {
@@ -103,10 +102,10 @@ class ParkMap extends Component {
             loadingEnabled={true}
           >
             <PositionMarker />
-            <ParkMarkers />
+            <ParkMarkers {...this.props} />
           </MapView>
         </View>
-        <ParkList />
+        <ParkList {...this.props} />
       </View>
     );
   }
