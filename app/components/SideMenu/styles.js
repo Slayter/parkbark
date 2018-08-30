@@ -6,13 +6,14 @@ export const styles = StyleSheet.create({
 		backgroundColor: 'white', // EF3A39
 	},
 	headerContainer: {
-		height: 150,
+		height: 120,
 		backgroundColor: '#EF3A39',
 		justifyContent: 'flex-end'
 	},
 	headerText: {
 		color: 'white',
-		fontSize: 18
+		fontSize: 18,
+		fontFamily: 'Source Sans Pro regular'
 	},
 	headerSubContainer: {
 		marginLeft: 30,
@@ -28,6 +29,40 @@ export const styles = StyleSheet.create({
 	},
 	itemText: {
 		color: '#3B3B3B',
-		fontSize: 15
+		fontSize: 15,
+		fontFamily: 'Source Sans Pro regular'
+	},
+	mainSubContainer: {
+		marginTop: 50
+	},
+	tokenContainer: {
+		position: 'absolute',
+		right: 10,
+		top: 10,
+		minWidth: 60,
+		height: 26,
+		borderRadius: 13,
+		backgroundColor: 'rgba(121, 2, 2, 0.19)',
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: 6
+	},
+	imgToken: {
+		height: 13,
+		resizeMode: 'contain',
+		marginLeft: 5
+	},
+	imgVIPToken: {
+		resizeMode: 'contain',
+		marginLeft: 5,
+		height: 13.5
+	},
+	whiteText: {
+		color: 'white',
+		fontSize: 16,
+		fontFamily: 'Source Sans Pro regular',
+		fontWeight: '600',
+		lineHeight: 18
 	}
 });

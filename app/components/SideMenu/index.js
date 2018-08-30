@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Platform, Linking } from 'react-native';
+import {
+	View,
+	Text,
+	FlatList,
+	TouchableOpacity,
+	Platform,
+	Linking,
+	Image
+} from 'react-native';
 import Rate, { AndroidMarket } from 'react-native-rate';
 import { styles } from './styles';
 
@@ -8,8 +16,9 @@ export class SideMenu extends Component {
 		super(props);
 		this.state = {
 			item: [
-				{ index: 0, label: 'Rate Park Bark' },
-				{ index: 1, label: 'Help us improve' }
+				{ index: 0, label: 'Buy more tokens' },
+				{ index: 1, label: 'Rate Park Bark' },
+				{ index: 2, label: 'Help us improve' }
 			]
 		}
 	}
@@ -22,7 +31,7 @@ export class SideMenu extends Component {
 			fallbackPlatformURL:"http://parkbarkapp.site"
 		};
 		switch (index) {
-			case 0:
+			case 1:
 				Rate.rate(options, (success) => {
 					if (success) {
 						// this technically only tells us if the user successfully went to the Review Page. Whether they actually did anything, we do not know.
@@ -30,7 +39,7 @@ export class SideMenu extends Component {
 					}
 				});
 				break;
-			case 1:
+			case 2:
 				Linking.canOpenURL('https://www.surveymonkey.com/r/WRS5D5V').then(supported => {
 					if (supported) {
 						Linking.openURL('https://www.surveymonkey.com/r/WRS5D5V');
@@ -45,13 +54,28 @@ export class SideMenu extends Component {
 	};
 	
 	renderHeaderContainer = () => {
+		const isVIP = false;
 		return (
 			<View style={styles.headerContainer}>
 				<View style={styles.headerSubContainer}>
 					<Text style={styles.headerText}>
-						Hello there!
+						Hi
 					</Text>
 				</View>
+				{!isVIP &&
+				<View style={styles.tokenContainer}>
+					<Text style={styles.whiteText}>
+						3
+					</Text>
+					<Image style={styles.imgToken} source={require('./../../img/icon_coin.png')} />
+				</View>}
+				{isVIP &&
+				<View style={styles.tokenContainer}>
+					<Text style={styles.whiteText}>
+						VIP
+					</Text>
+					<Image style={styles.imgVIPToken} source={require('./../../img/icon_vip.png')} />
+				</View>}
 			</View>
 		);
 	};
@@ -75,6 +99,18 @@ export class SideMenu extends Component {
 					data={item}
 					renderItem={this.renderItem}
 				/>
+				<View style={styles.mainSubContainer}>
+					<TouchableOpacity style={styles.itemContainer}>
+						<Text style={styles.itemText}>
+							Login
+						</Text>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.itemContainer}>
+						<Text style={styles.itemText}>
+							Log out
+						</Text>
+					</TouchableOpacity>
+				</View>
 			</View>
 		)
 	};
