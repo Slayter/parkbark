@@ -89,7 +89,7 @@ class ParkDetail extends Component {
 
   onBackPress = () => {
     if (this.props.adsRemoved) {
-      this.props.navigation.goBack();
+      return this.props.navigation.goBack();
     }
     this.props.navigation.navigate('adCTA');
   };

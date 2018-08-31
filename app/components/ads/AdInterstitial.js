@@ -36,22 +36,10 @@ const styles = StyleSheet.create({
 class AdInterstitial extends Component {
   onClose = () => {
   	console.info('this.props', this.props);
-	  const resetAction = StackActions.reset({
-		  index: 0,
-		  actions: [
-			  NavigationActions.navigate({ routeName: 'drawerMenu' })
-		  ]
-	  });
-	  this.props.navigation.dispatch(resetAction);
+	  this.props.navigation.navigate('drawerMenu');
   };
   keepAds = () => {
-	  const resetAction = StackActions.reset({
-		  index: 0,
-		  actions: [
-			  NavigationActions.navigate({ routeName: 'drawerMenu' })
-		  ]
-	  });
-	  this.props.navigation.dispatch(resetAction);
+	  this.props.navigation.navigate('drawerMenu');
 	};
   pay = async () => {
     const productId = 'com.parkbark.adsremoved';
