@@ -46,7 +46,8 @@ export const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 6
+		paddingRight: 6,
+		paddingLeft: 11
 	},
 	imgToken: {
 		height: 13,
